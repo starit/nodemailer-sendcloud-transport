@@ -20,6 +20,8 @@ SendCloudTransport.prototype.send = function(mail, callback) {
 
   email.api_key = this.options.auth.api_key;
   email.api_user = this.options.auth.api_user;
+  email.from = mail.message.getEnvelope().from;
+  email.to = mail.message.getEnvelope().to; 
 
   var content= qs.stringify(email);
   var options={
